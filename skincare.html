@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+    --bg-color: #faf7f5;
+    --footer-bg: #f3ece7;
+    --primary-text: #2c2929;
+    --secondary-text: #6e6b6b;
+    --accent-color: #d4a373;
+    --border-color: #e2d7cd;
+    --brand-brown: #3b2319;
+    --brand-rose: #8c5b5a;
+    --font-heading: 'Cinzel', serif;
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+}
+
+body {
+    background-color: #fcf9f6;
+    color: var(--primary-text);
+    overflow-x: hidden;
+    padding-top: 110px; /* Offset for fixed header */
+}
+
+/* ================= Fixed Header & Navigation ================= */
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.headline{
+    background-color: rgb(153, 107, 106);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 15px;
+    color: white;
+    font-family: 'Gill Sans', sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.headline p{
+    display: inline-block;
+    padding-left: 100%;
+    animation: slide 12s linear infinite;
+} 
+
+@keyframes slide { 
+    0% { transform: translateX(0); } 
+    100% { transform: translateX(-100%); } 
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(235, 211, 203, 0.95);
+    backdrop-filter: blur(5px);
+    padding: 10px 40px;
+    height: 70px;
+}
+
+.logo img{
+    width: 100px;
+    height: auto;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links li { 
+    position: relative; 
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #6e4f4f;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-links a:hover { 
+    color: #3b2323; 
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #8c5b5a;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 1001;
+    list-style: none;
+}
+
+.dropdown-menu li { 
+    width: 100%; 
+}
+
+.dropdown-menu a {
+    color: #ffffff;
+    padding: 10px 20px;
+    text-transform: none;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+}
+
+.dropdown-menu a:hover { 
+    background-color: #744746; 
+}
+
+.dropdown:hover .dropdown-menu { 
+    display: block; 
+}
+
+.search-box{ 
+    position: relative; 
+    width: 220px; 
+}
+
+.search-box input{
+    width: 100%;
+    height: 38px;
+    border: 1px solid rgba(110, 79, 79, 0.2);
+    outline: none;
+    padding: 0 15px 0 35px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    color: #6e4f4f;
+    transition: 0.3s;
+}
+
+.search-box input::placeholder { 
+    color: #a08080; 
+}
+
+.search-box i{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c5b5a;
+    font-size: 14px;
+}
+
+.nav-actions { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+.nav-actions a {
+    color: #6e4f4f;
+    font-size: 18px;
+    text-decoration: none;
+    position: relative;
+}
+
+.cart-icon { 
+    position: relative; 
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #8c5b5a;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 22px;
+    color: #6e4f4f;
+    cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+    nav {
+        padding: 10px 20px;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+    .search-box {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 95px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 1;
+    }
+
+    .logo {
+        order: 2;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .nav-actions {
+        order: 3;
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ebd3cb;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 30px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        gap: 18px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 10px 0 0 15px;
+    }
+
+    .dropdown-menu a {
+        color: #6e4f4f;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contact-us-section {
+        padding: 30px 15px;
+    }
+
+    .contact-heading {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        margin-bottom: 18px;
+    }
+
+    .contact-intro-text {
+        font-size: 13px;
+    }
+
+    .info-item {
+        font-size: 13px;
+        gap: 12px;
+    }
+
+    .contact-submit-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+    }
+}
+.site-footer {
+    background-color: var(--footer-bg);
+    color: var(--primary-text);
+    padding: 60px 5% 30px;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr repeat(3, 1fr);
+    gap: 40px;
+}
+
+.footer-brand h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin: 0 0 15px 0;
+    text-transform: lowercase;
+}
+
+.footer-brand p {
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 300px;
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 8px;
+    max-width: 320px;
+}
+
+.newsletter-form input {
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    flex-grow: 1;
+    background-color: #ffffff;
+    outline: none;
+}
+
+.newsletter-form button {
+    background-color: var(--primary-text);
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: var(--accent-color);
+}
+
+.footer-column h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 20px 0;
+    color: var(--primary-text);
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-column li {
+    margin-bottom: 12px;
+}
+
+.footer-column a {
+    color: var(--secondary-text);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-column a:hover {
+    color: var(--primary-text);
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.8rem;
+    color: var(--secondary-text);
+}
+
+.social-links {
+    display: flex;
+    gap: 18px;
+}
+
+.social-links a {
+    color: var(--secondary-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--primary-text);
+}
+
+/* ================= Global Media Queries ================= */
+@media screen and (max-width: 1024px) {
+    nav {
+        padding: 10px 20px;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+    .search-box {
+        width: 180px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .footer-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        padding-top: 95px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 1;
+    }
+
+    .logo {
+        order: 2;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+
+    .nav-actions {
+        order: 3;
+        gap: 15px;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ebd3cb;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 30px;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        gap: 18px;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background-color: transparent;
+        padding: 10px 0 0 15px;
+    }
+
+    .dropdown-menu a {
+        color: #6e4f4f;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contact-us-section {
+        padding: 30px 15px;
+    }
+
+    .contact-heading {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+        margin-bottom: 18px;
+    }
+
+    .contact-intro-text {
+        font-size: 13px;
+    }
+
+    .info-item {
+        font-size: 13px;
+        gap: 12px;
+    }
+
+    .contact-submit-btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+    }
+}
+    </style>
+</head>
+<body>
+     <div class="header">
+        <div class="headline">
+            <p>50% Discount on all our products till 30th July for first-time customers! Grab this offer as soon as possible!</p>
+        </div>
+
+        <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="logo">
+                <img src="fimps_logo-removebg-preview.png" alt="FIMPS Logo">
+            </div>
+
+            <ul class="nav-links" id="nav-list">
+                <li><a href="responsive.html">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#">Category<i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Skincare</a></li>
+                        <li><a href="#">Makeup</a></li>
+                        <li><a href="#">Haircare</a></li>
+                        <li><a href="#">Body Care</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search">
+            </div>
+
+            <div class="nav-actions">
+                <a href="#" title="Account"><i class="fa-regular fa-user"></i></a>
+                <a href="#" title="Wishlist"><i class="fa-regular fa-heart"></i></a>
+                <a href="#" class="cart-icon" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+      <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
+     <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>fims beauty</h3>
+                <p>Pure, minimal, and thoughtful skincare created to bring out your natural glow every day.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault();">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+
+            <div class="footer-column">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">All Products</a></li>
+                    <li><a href="#">Serums & Oils</a></li>
+                    <li><a href="#">Moisturizers</a></li>
+                    <li><a href="#">Cleansers</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Clean Ingredients</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 fims beauty. All rights reserved.</p>
+            
+            <div class="social-links">
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">TikTok</a>
+            </div>
+
+            <div>
+                <a href="#" style="color: inherit; text-decoration: none; margin-right: 12px;">Privacy Policy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

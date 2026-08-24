@@ -1,0 +1,1899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | FIMPS Beauty</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #faf7f5;
+            --footer-bg: #f3ece7;
+            --primary-text: #2c2929;
+            --secondary-text: #6e6b6b;
+            --accent-color: #d4a373;
+            --border-color: #e2d7cd;
+            --brand-brown: #3b2319;
+            --brand-rose: #8c5b5a;
+            --font-heading: 'Cinzel', serif;
+            --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-sans);
+        }
+
+        body {
+            background-color: #fcf9f6;
+            color: var(--primary-text);
+            overflow-x: hidden;
+            padding-top: 0px;
+        }
+
+        /* Fixed Header */
+        .header{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .headline{
+            background-color: rgb(153, 107, 106);
+            text-align: center;
+            padding: 8px 0;
+            font-size: 14px;
+            color: white;
+            font-family: 'Gill Sans', sans-serif;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+        }
+
+        .headline p{
+            display: inline-block;
+            padding-left: 100%;
+            animation: slide 14s linear infinite;
+        } 
+
+        @keyframes slide { 
+            0% { transform: translateX(0); } 
+            100% { transform: translateX(-100%); } 
+        }
+
+        nav{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ebd3cb;
+            backdrop-filter: blur(5px);
+            padding: 10px 40px;
+            height: 65px;
+        }
+
+        .logo img{
+            width: 95px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .nav-links li { position: relative; }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #6e4f4f;
+            font-weight: 600;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-links a:hover { color: #3b2323; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #8c5b5a;
+            min-width: 150px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 4px;
+            padding: 10px 0;
+            z-index: 1001;
+            list-style: none;
+        }
+
+        .dropdown-menu li { width: 100%; }
+
+        .dropdown-menu a {
+            color: #ffffff;
+            padding: 10px 20px;
+            text-transform: none;
+            font-size: 14px;
+            font-weight: 400;
+            display: block;
+        }
+
+        .dropdown-menu a:hover { background-color: #744746; }
+        .dropdown:hover .dropdown-menu { display: block; }
+
+        .search-box{ 
+            position: relative; 
+            width: 200px; 
+        }
+
+        .search-box input{
+            width: 100%;
+            height: 36px;
+            border: 1px solid rgba(110, 79, 79, 0.2);
+            outline: none;
+            padding: 0 15px 0 35px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 13px;
+            color: #6e4f4f;
+            transition: 0.3s;
+        }
+
+        .search-box input::placeholder { color: #a08080; }
+
+        .search-box i{
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8c5b5a;
+            font-size: 14px;
+        }
+
+        .nav-actions { 
+            display: flex; 
+            align-items: center; 
+            gap: 18px; 
+        }
+
+        .nav-actions a {
+            color: #6e4f4f;
+            font-size: 18px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .cart-icon, .wishlist-icon { position: relative; cursor: pointer; }
+
+        .cart-badge, .wishlist-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background-color: #8c5b5a;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 22px;
+            color: #6e4f4f;
+            cursor: pointer;
+        }
+
+        /* Banner */
+        .banner {
+            width: 100%;
+            position: relative;
+            display: block;
+            margin-top: 0;
+            background-color: #f8f3ee;
+            text-align: center;
+            line-height: 0;
+        }
+
+        .banner img {
+            width: 100%;
+            height: auto;
+            max-height: 117vh;
+            object-fit: fill;
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Shop Section */
+        .shop-all-section {
+            width: 100%;
+            padding: 50px 5%;
+            background-color: #fcf9f6;
+        }
+
+        .shop-container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .shop-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .shop-subtitle {
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #8c7b70;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .shop-title {
+            font-family: var(--font-heading);
+            font-size: 30px;
+            font-weight: 600;
+            color: #3b2319;
+            letter-spacing: 2px;
+        }
+
+        .decorative-line-center {
+            width: 70px;
+            height: 1.5px;
+            background-color: #3b2319;
+            margin: 12px auto 0 auto;
+        }
+
+        /* Filter Bar */
+        .shop-filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #e2d7cd;
+            margin-bottom: 30px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 7px 16px;
+            border: 1px solid #e2d7cd;
+            background-color: #ffffff;
+            color: #6e4f4f;
+            border-radius: 30px;
+            font-size: 12.5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: #3b2319;
+            color: #ffffff;
+            border-color: #3b2319;
+        }
+
+        .sort-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .product-count {
+            font-size: 13px;
+            color: #8c7b70;
+        }
+
+        .sort-select {
+            padding: 7px 10px;
+            border: 1px solid #e2d7cd;
+            background-color: #ffffff;
+            color: #3b2319;
+            border-radius: 6px;
+            font-size: 12.5px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Grid */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 22px;
+        }
+
+        .shop-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 4px 18px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #f0eae1;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 22px rgba(0,0,0,0.07);
+        }
+
+        .shop-img-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f8f3ee;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .shop-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .shop-card:hover .shop-img-box img {
+            transform: scale(1.04);
+        }
+
+        .shop-wishlist-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(4px);
+            border: none;
+            color: #3b2319;
+            font-size: 13px;
+            cursor: pointer;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .shop-wishlist-btn:hover { transform: scale(1.1); }
+
+        .shop-wishlist-btn.active i {
+            color: #8c5b5a !important;
+            font-weight: 900 !important;
+        }
+
+        .card-badge-pill {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background-color: #8c5b5a;
+            color: #ffffff;
+            font-size: 9.5px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .shop-card-info {
+            padding-top: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex-grow: 1;
+        }
+
+        .shop-card-category {
+            font-size: 10.5px;
+            text-transform: uppercase;
+            color: #8c7b70;
+            letter-spacing: 0.5px;
+        }
+
+        .shop-card-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #3b2319;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+        }
+
+        .shop-card-title:hover { color: #8c5b5a; }
+
+        .shop-card-sub {
+            font-size: 11.5px;
+            color: #6e6b6b;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .shop-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+            padding-top: 4px;
+        }
+
+        .shop-price {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: #3b2319;
+        }
+
+        .product-actions-wrapper {
+            margin-top: 6px;
+            width: 100%;
+        }
+
+        .product-buttons-row {
+            display: flex;
+            gap: 5px;
+            width: 100%;
+        }
+
+        .qty-controller-box {
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #8c5b5a;
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 6px 14px;
+            width: 100%;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            line-height: 1;
+            user-select: none;
+        }
+
+        .qty-val {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* Toggle between regular buttons and QTY controller */
+        .shop-card.active-qty .product-buttons-row {
+            display: none !important;
+        }
+        .shop-card.active-qty .qty-controller-box {
+            display: flex !important;
+        }
+
+        .shop-add-btn, .shop-buy-now-btn {
+            flex: 1;
+            padding: 6px 4px;
+            border: none;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            transition: background-color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .shop-add-btn { background-color: #3b2319; color: #ffffff; }
+        .shop-add-btn:hover { background-color: #8c5b5a; }
+
+        .shop-buy-now-btn { background-color: #8c5b5a; color: #ffffff; }
+        .shop-buy-now-btn:hover { background-color: #3b2319; }
+
+        /* Slide-over Side Panel Styles */
+        .cart-drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .cart-drawer-overlay.open { visibility: visible; opacity: 1; }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 100%;
+            max-width: 380px;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 2001;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            transition: right 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .cart-drawer.open { right: 0; }
+
+        .cart-drawer-header {
+            padding: 18px 22px;
+            border-bottom: 1px solid #e2d7cd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f3ee;
+        }
+        .cart-drawer-header h3 {
+            font-size: 17px;
+            font-weight: 600;
+            color: #3b2319;
+            font-family: 'Cinzel', serif;
+        }
+        .cart-close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #3b2319;
+            cursor: pointer;
+        }
+
+        .cart-drawer-body {
+            padding: 18px 22px;
+            flex-grow: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .cart-empty-msg {
+            text-align: center;
+            color: #6e6b6b;
+            margin-top: 40px;
+            font-size: 13.5px;
+        }
+
+        .cart-item-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0eae1;
+        }
+        .cart-item-img {
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 6px;
+            background-color: #f8f3ee;
+        }
+        .cart-item-details { flex-grow: 1; }
+        .cart-item-title {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: #2b1a17;
+            margin-bottom: 2px;
+        }
+        .cart-item-price { font-size: 12.5px; color: #8c5b5a; font-weight: 600; }
+        .cart-item-qty { font-size: 11.5px; color: #6e6b6b; }
+        .cart-item-remove, .wishlist-item-remove {
+            background: none;
+            border: none;
+            color: #a08080;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .cart-item-remove:hover, .wishlist-item-remove:hover { color: #b85454; }
+
+        .cart-drawer-footer {
+            padding: 18px 22px;
+            border-top: 1px solid #e2d7cd;
+            background-color: #f8f3ee;
+        }
+        .cart-total-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 700;
+            color: #2b1a17;
+            margin-bottom: 12px;
+        }
+        .cart-checkout-btn {
+            width: 100%;
+            padding: 11px;
+            background-color: #2b1a17;
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 12.5px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .cart-checkout-btn:hover { background-color: #8c5b5a; }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 3000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-box {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            position: relative;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-box {
+            transform: scale(1);
+        }
+        .modal-box i.success-icon {
+            font-size: 40px;
+            color: #8c5b5a;
+            margin-bottom: 15px;
+        }
+        .modal-box h3 {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            color: #3b2319;
+            margin-bottom: 10px;
+        }
+        .modal-box p {
+            font-size: 13.5px;
+            color: var(--secondary-text);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .modal-close-btn {
+            background-color: #3b2319;
+            color: #ffffff;
+            border: none;
+            padding: 9px 24px;
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .modal-close-btn:hover {
+            background-color: #8c5b5a;
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--footer-bg);
+            color: var(--primary-text);
+            padding: 50px 5% 25px;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin: 0 0 12px 0;
+            text-transform: lowercase;
+        }
+
+        .footer-brand p {
+            color: var(--secondary-text);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            max-width: 280px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 6px;
+            max-width: 300px;
+        }
+
+        .newsletter-form input {
+            padding: 9px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.82rem;
+            flex-grow: 1;
+            background-color: #ffffff;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            background-color: var(--primary-text);
+            color: #ffffff;
+            border: none;
+            padding: 9px 15px;
+            border-radius: 6px;
+            font-size: 0.82rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #8c5b5a;
+        }
+
+        .footer-column h4 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 0 0 15px 0;
+        }
+
+        .footer-column ul { list-style: none; padding: 0; margin: 0; }
+        .footer-column li { margin-bottom: 10px; }
+        .footer-column a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        .footer-column a:hover { color: var(--primary-text); }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 15px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.78rem;
+            color: var(--secondary-text);
+        }
+
+        .social-links { display: flex; gap: 15px; }
+        .social-links a { color: var(--secondary-text); text-decoration: none; }
+
+        /* Responsive Media Queries */
+        @media screen and (max-width: 1024px) {
+            nav { padding: 10px 20px; }
+            .nav-links { gap: 15px; }
+            .search-box { width: 160px; }
+            .shop-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-toggle { display: block; order: 1; }
+            .logo { order: 2; }
+            .logo img { width: 85px; }
+            body{
+                padding-top: 79px; 
+            }
+            .banner img{
+                object-fit: contain;
+            }
+            .nav-actions { order: 3; gap: 12px; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(235, 211, 203, 0.98);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 25px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+                gap: 15px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links li { width: 100%; }
+            .search-box { display: none; }
+            .shop-title { font-size: 24px; }
+            .shop-filter-bar { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .sort-wrapper { width: 100%; justify-content: space-between; }
+            .footer-container { grid-template-columns: 1fr; gap: 25px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media screen and (max-width: 600px) {
+            .shop-all-section { padding: 35px 10px; }
+            .shop-title { font-size: 20px; letter-spacing: 1px; }
+            .shop-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .shop-card { padding: 8px; border-radius: 8px; }
+            .shop-card-title { font-size: 12.5px; }
+            .shop-card-sub { font-size: 10px; }
+            .shop-price { font-size: 11px; }
+            .product-buttons-row { flex-direction: column; gap: 4px; }
+            .shop-add-btn, .shop-buy-now-btn { padding: 5px; font-size: 9.5px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cart Slide-Over Panel -->
+    <div class="cart-drawer-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-drawer-header">
+            <h3>Your Shopping Bag</h3>
+            <button class="cart-close-btn" id="cartCloseBtn">&times;</button>
+        </div>
+        <div class="cart-drawer-body" id="cartDrawerBody">
+            <p class="cart-empty-msg">Your bag is currently empty.</p>
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total-row">
+                <span>Total:</span>
+                <span id="cartTotalPrice">Rs. 0</span>
+            </div>
+            <button class="cart-checkout-btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Wishlist Slide-Over Panel -->
+    <div class="cart-drawer-overlay" id="wishlistOverlay"></div>
+    <div class="cart-drawer" id="wishlistDrawer">
+        <div class="cart-drawer-header">
+            <h3>My Wishlist</h3>
+            <button class="cart-close-btn" id="wishlistCloseBtn">&times;</button>
+        </div>
+        <div class="cart-drawer-body" id="wishlistDrawerBody">
+            <p class="cart-empty-msg">Your wishlist is currently empty.</p>
+        </div>
+        <div class="cart-drawer-footer">
+            <div class="cart-total-row">
+                <span>Total Items:</span>
+                <span id="wishlistTotalCount">0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Success Modal -->
+    <div class="modal-overlay" id="newsletterModalOverlay">
+        <div class="modal-box">
+            <i class="fa-regular fa-circle-check success-icon"></i>
+            <h3>Thank You!</h3>
+            <p id="modalMessageText">You have successfully joined our newsletter. Check your inbox for updates!</p>
+            <button type="button" class="modal-close-btn" id="newsletterModalCloseBtn">Close</button>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <div class="header">
+        <div class="headline">
+            <p>50% Discount on all our products till 30th July for first-time customers! Grab this offer as soon as possible!</p>
+        </div>
+
+        <nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div class="logo">
+                <img src="fimps_logo-removebg-preview.png" alt="FIMPS Logo">
+            </div>
+
+            <ul class="nav-links" id="nav-list">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li class="dropdown">
+                    <a href="#">Category<i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
+                    <ul class="dropdown-menu">
+                         <li><a href="xyz.html?category=skincare">Skincare</a></li>
+                         <li><a href="xyz.html?category=makeup">Makeup</a></li>
+                         <li><a href="xyz.html?category=haircare">Haircare</a></li>
+                         <li><a href="xyz.html?category=bodycare">Body Care</a></li>
+                    </ul>
+                </li>
+                <li><a href="xyz.html">Shop</a></li>
+                <li><a href="responsivecontactus.html">Contact Us</a></li>
+            </ul>
+
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="navbarSearchInput" placeholder="Search">
+            </div>
+
+            <div class="nav-actions">
+                <a href="#" class="wishlist-icon" id="wishlistNavTrigger" title="Wishlist">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="wishlist-badge">0</span>
+                </a>
+                <a href="#" class="cart-icon" id="cartNavTrigger" title="Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="cart-badge">0</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Banner -->
+    <div class="banner">
+        <img src="bannerrr.png" alt="Banner">
+    </div>
+
+    <!-- Shop All Section -->
+    <section class="shop-all-section" id="shop">
+        <div class="shop-container">
+            
+            <div class="shop-header">
+                <span class="shop-subtitle">OUR FULL COLLECTION</span>
+                <h2 class="shop-title">SHOP ALL PRODUCTS</h2>
+                <div class="decorative-line-center"></div>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="shop-filter-bar">
+                <div class="filter-tabs">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="skincare">Skincare</button>
+                    <button class="filter-btn" data-filter="haircare">Hair Care</button>
+                    <button class="filter-btn" data-filter="makeup">Makeup</button>
+                    <button class="filter-btn" data-filter="bodycare">Body Care</button>
+                </div>
+
+                <div class="sort-wrapper">
+                    <span class="product-count" id="productCount">Showing 13 Products</span>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="featured">Sort by: Featured</option>
+                        <option value="low-high">Price: Low to High</option>
+                        <option value="high-low">Price: High to Low</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="shop-grid" id="shopGrid">
+                
+                <!-- 1. Skincare Card -->
+                <div class="shop-card" data-category="skincare" data-price="2,600" data-id="skincare-01">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="serum.png" alt="Super Glow Serum">
+                        <span class="card-badge-pill">Bestseller</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Skincare</span>
+                        <h3 class="shop-card-title">Super Glow</h3>
+                        <p class="shop-card-sub">vitamin c + magnesium serum</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 2,600</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Skincare Card -->
+                <div class="shop-card" data-category="skincare" data-price="1,400" data-id="skincare-02">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="cleanser.png" alt="Milky Jelly Cleanser">
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Skincare</span>
+                        <h3 class="shop-card-title">Milky Jelly Cleanser</h3>
+                        <p class="shop-card-sub">conditioning face wash</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 1,400</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Skincare Card -->
+                <div class="shop-card" data-category="skincare" data-price="2,100" data-id="skincare-03">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="cream.png" alt="Priming Moisturizer">
+                        <span class="card-badge-pill">Popular</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Skincare</span>
+                        <h3 class="shop-card-title">Priming Moisturizer</h3>
+                        <p class="shop-card-sub">buildable daily hydration</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 2,100</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Hair Care Card -->
+                <div class="shop-card" data-category="haircare" data-price="2,200" data-id="hairoil-06">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="hairoil.png" alt="Nourishing Hair Elixir">
+                        <span class="card-badge-pill">Popular</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Hair Care</span>
+                        <h3 class="shop-card-title">Nourishing Hair Elixir</h3>
+                        <p class="shop-card-sub">lightweight argan & jojoba blend</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 2,200</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. Makeup Card -->
+                <div class="shop-card" data-category="makeup" data-price="1,800" data-id="makeup-01">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="lipstick.png" alt="Solution Exfoliating Skin Perfector">
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Makeup</span>
+                        <h3 class="shop-card-title">Solution</h3>
+                        <p class="shop-card-sub">exfoliating skin perfector</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 1,800</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Skincare Card -->
+                <div class="shop-card" data-category="skincare" data-price="2,900" data-id="skincare-04">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="toner.png" alt="Futuredew Facial Oil">
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Skincare</span>
+                        <h3 class="shop-card-title">Futuredew</h3>
+                        <p class="shop-card-sub">facial oil-serum hybrid</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 2,900</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 7. Skincare Card -->
+                <div class="shop-card" data-category="skincare" data-price="1,200" data-id="skincare-05">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="sunscreenn.png" alt="Balm Dotcom Salve">
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Skincare</span>
+                        <h3 class="shop-card-title">Balm Dotcom</h3>
+                        <p class="shop-card-sub">universal skin salve</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 1,200</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Makeup Card (Mascara) -->
+                <div class="shop-card" data-category="makeup" data-price="1,500" data-id="mascara-01">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="maskara.png" alt="Lash Lift Mascara">
+                        <span class="card-badge-pill">New</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Makeup</span>
+                        <h3 class="shop-card-title">Lash Lift Mascara</h3>
+                        <p class="shop-card-sub">volumizing wand</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 1,500</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Makeup Card (Eyeshadow) -->
+                <div class="shop-card" data-category="makeup" data-price="2,300" data-id="eyeshadow-03">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="eyeshadow.png" alt="Eyeshadow Palette">
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Makeup</span>
+                        <h3 class="shop-card-title">Nude Shimmer Palette</h3>
+                        <p class="shop-card-sub">pigmented buttery finish</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 2,300</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Makeup Card (Blush) -->
+                <div class="shop-card" data-category="makeup" data-price="1,750" data-id="blush-02">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="blushon.png" alt="Velvet Soft Blush">
+                        <span class="card-badge-pill">Trending</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Makeup</span>
+                        <h3 class="shop-card-title">Velvet Soft Blush</h3>
+                        <p class="shop-card-sub">buildable natural flush</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 1,750</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Body Care Card (Shower Gel) -->
+                <div class="shop-card" data-category="bodycare" data-price="1,600" data-id="showergel-05">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="showergel.png" alt="Refreshing Shower Gel">
+                        <span class="card-badge-pill">New</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Body Care</span>
+                        <h3 class="shop-card-title">Botanical Shower Gel</h3>
+                        <p class="shop-card-sub">gentle cleansing oils</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 1,600</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. Body Care Card (Body Lotion) -->
+                <div class="shop-card" data-category="bodycare" data-price="1,950" data-id="bodylotion-04">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="bodylotion.png" alt="Hydrating Body Lotion">
+                        <span class="card-badge-pill">Bestseller</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Body Care</span>
+                        <h3 class="shop-card-title">Velvet Silk Body Lotion</h3>
+                        <p class="shop-card-sub">deeply nourishing moisture</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 1,950</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13. Hair Care Card (Hair Mask) -->
+                <div class="shop-card" data-category="haircare" data-price="2,500" data-id="hairmask-07">
+                    <div class="shop-img-box">
+                        <button class="shop-wishlist-btn" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
+                        <img src="hairmask.png" alt="Repairing Hair Mask">
+                        <span class="card-badge-pill">Bestseller</span>
+                    </div>
+                    <div class="shop-card-info">
+                        <span class="shop-card-category">Hair Care</span>
+                        <h3 class="shop-card-title">Deep Repair Hair Mask</h3>
+                        <p class="shop-card-sub">intense hydration for damaged hair</p>
+                        <div class="shop-price-row">
+                            <span class="shop-price">Rs. 2,500</span>
+                        </div>
+                        <div class="product-actions-wrapper">
+                            <div class="product-buttons-row">
+                                <button class="shop-add-btn"><i class="fa-solid fa-bag-shopping"></i> <span>Add to Bag</span></button>
+                                <button class="shop-buy-now-btn"><i class="fa-solid fa-bolt"></i> <span>Buy Now</span></button>
+                            </div>
+                            <div class="qty-controller-box">
+                                <button type="button" class="qty-btn qty-minus">-</button>
+                                <span class="qty-val">1</span>
+                                <button type="button" class="qty-btn qty-plus">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+          
+          <div class="footer-brand">
+            <h3>fimps beauty</h3>
+            <p>Pure, minimal, and thoughtful skincare created to bring out your natural glow every day.</p>
+            <form class="newsletter-form" id="newsletterForm">
+              <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+              <button type="submit">Join</button>
+            </form>
+          </div>
+
+          <div class="footer-column">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="xyz.html">All Products</a></li>
+              <li><a href="xyz.html?category=skincare">Skincare</a></li>
+              <li><a href="xyz.html?category=haircare">Haircare</a></li>
+              <li><a href="xyz.html?category=makeup">Makeup</a></li>
+              <li><a href="xyz.html?category=bodycare">Body Care</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>About</h4>
+            <ul>
+              <li><a href="aboutus.html#ourstory">Our Story</a></li>
+              <li><a href="aboutus.html#ingredients">Clean Ingredients</a></li>
+              <li><a href="aboutus.html#sustain">Sustainability</a></li>
+             
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="responsivecontactus.html">Contact Us</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 fims beauty. All rights reserved.</p>
+          
+          <div class="social-links">
+            <a href="#">Instagram</a>
+            <a href="#">Pinterest</a>
+            <a href="#">TikTok</a>
+          </div>
+
+          <div>
+            <a href="#" style="color: inherit; text-decoration: none; margin-right: 12px;">Privacy Policy</a>
+            <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+          </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        if(mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                navList.classList.toggle('active');
+            });
+        }
+
+        const filterBtns = document.querySelectorAll(".filter-btn");
+        const shopCards = document.querySelectorAll(".shop-card");
+        const productCount = document.getElementById("productCount");
+        const sortSelect = document.getElementById("sortSelect");
+        const shopGrid = document.getElementById("shopGrid");
+        const navbarSearchInput = document.getElementById("navbarSearchInput");
+        
+        function getCardId(card) {
+            const allCards = Array.from(document.querySelectorAll(".shop-card"));
+            return card.getAttribute("data-id") || `prod-${allCards.indexOf(card) + 1}`;
+        }
+
+        const cartDrawer = document.getElementById('cartDrawer');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartCloseBtn = document.getElementById('cartCloseBtn');
+        const cartDrawerBody = document.getElementById('cartDrawerBody');
+        const cartTotalPrice = document.getElementById('cartTotalPrice');
+
+        const wishlistDrawer = document.getElementById('wishlistDrawer');
+        const wishlistOverlay = document.getElementById('wishlistOverlay');
+        const wishlistCloseBtn = document.getElementById('wishlistCloseBtn');
+        const wishlistDrawerBody = document.getElementById('wishlistDrawerBody');
+        const wishlistTotalCount = document.getElementById('wishlistTotalCount');
+
+        const cartNavTrigger = document.getElementById('cartNavTrigger') || document.querySelector(".cart-icon");
+        const wishlistNavTrigger = document.getElementById('wishlistNavTrigger') || document.querySelector(".wishlist-icon");
+
+        function openCart() { cartDrawer.classList.add('open'); cartOverlay.classList.add('open'); }
+        function closeCart() { cartDrawer.classList.remove('open'); cartOverlay.classList.remove('open'); }
+        function openWishlist() { wishlistDrawer.classList.add('open'); wishlistOverlay.classList.add('open'); }
+        function closeWishlist() { wishlistDrawer.classList.remove('open'); wishlistOverlay.classList.remove('open'); }
+
+        if (cartNavTrigger) cartNavTrigger.addEventListener('click', (e) => { e.preventDefault(); openCart(); });
+        if (cartCloseBtn) cartCloseBtn.addEventListener('click', closeCart);
+        if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+        if (wishlistNavTrigger) wishlistNavTrigger.addEventListener('click', (e) => { e.preventDefault(); openWishlist(); });
+        if (wishlistCloseBtn) wishlistCloseBtn.addEventListener('click', closeWishlist);
+        if (wishlistOverlay) wishlistOverlay.addEventListener('click', closeWishlist);
+
+        // State Init with localStorage
+        window.cartItems = JSON.parse(localStorage.getItem("fimpsCart")) || [];
+        window.cartItems = window.cartItems.map(item => ({
+            ...item,
+            quantity: parseInt(item.quantity) || 1
+        }));
+
+        window.wishlistItems = JSON.parse(localStorage.getItem("fimpsWishlist")) || [];
+
+        function updateEverythingUI() {
+            const cartBadge = document.querySelector(".cart-badge");
+            const wishlistBadge = document.querySelector(".wishlist-badge");
+
+            const totalCartQty = window.cartItems.reduce((sum, item) => sum + (parseInt(item.quantity) || 0), 0);
+            if (cartBadge) cartBadge.textContent = totalCartQty;
+            if (wishlistBadge) wishlistBadge.textContent = window.wishlistItems.length;
+
+            localStorage.setItem("fimpsCart", JSON.stringify(window.cartItems));
+            localStorage.setItem("fimpsWishlist", JSON.stringify(window.wishlistItems));
+
+            // Render Cart Drawer
+            if (window.cartItems.length === 0) {
+                cartDrawerBody.innerHTML = `<p class="cart-empty-msg">Your bag is currently empty.</p>`;
+                if (cartTotalPrice) cartTotalPrice.innerText = `Rs. 0`;
+            } else {
+                let html = '';
+                let grandTotal = 0;
+                window.cartItems.forEach(item => {
+                    const cleanPrice = parseFloat(String(item.price).replace(/[^\d.]/g, '')) || 0;
+                    const itemTotal = cleanPrice * (parseInt(item.quantity) || 1);
+                    grandTotal += itemTotal;
+                    html += `
+                        <div class="cart-item-row" data-id="${item.id}">
+                            <img src="${item.img}" alt="${item.title}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h4 class="cart-item-title">${item.title}</h4>
+                                <p class="cart-item-price">Rs. ${item.price}</p>
+                                <p class="cart-item-qty">Qty: ${item.quantity}</p>
+                            </div>
+                            <button class="cart-item-remove" title="Remove"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                });
+                cartDrawerBody.innerHTML = html;
+                if (cartTotalPrice) cartTotalPrice.innerText = `Rs. ${grandTotal.toLocaleString('en-IN')}`;
+            }
+
+            // Sync Quantity Values on Cards
+            document.querySelectorAll(".shop-card").forEach(card => {
+                const id = getCardId(card);
+                const item = window.cartItems.find(i => i.id === id);
+                const qtySpan = card.querySelector(".qty-val");
+                if (item && item.quantity > 0) {
+                    if (qtySpan) qtySpan.innerText = item.quantity;
+                } else {
+                    card.classList.remove("active-qty");
+                    if (qtySpan) qtySpan.innerText = "1";
+                }
+            });
+
+            // Render Wishlist Drawer
+            if (window.wishlistItems.length === 0) {
+                wishlistDrawerBody.innerHTML = `<p class="cart-empty-msg">Your wishlist is currently empty.</p>`;
+                if (wishlistTotalCount) wishlistTotalCount.innerText = "0";
+            } else {
+                let html = '';
+                window.wishlistItems.forEach(item => {
+                    html += `
+                        <div class="cart-item-row" data-id="${item.id}">
+                            <img src="${item.img}" alt="${item.title}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h4 class="cart-item-title">${item.title}</h4>
+                                <p class="cart-item-price">Rs ${item.price}</p>
+                            </div>
+                            <button class="wishlist-item-remove" title="Remove"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    `;
+                });
+                wishlistDrawerBody.innerHTML = html;
+                if (wishlistTotalCount) wishlistTotalCount.innerText = window.wishlistItems.length;
+            }
+        }
+
+        updateEverythingUI();
+
+        // Sync Wishlist Active state on load
+        window.wishlistItems.forEach(wishItem => {
+            document.querySelectorAll(".shop-card").forEach(card => {
+                if (getCardId(card) === wishItem.id) {
+                    const btn = card.querySelector(".shop-wishlist-btn");
+                    if (btn) {
+                        btn.classList.add("active");
+                        const icon = btn.querySelector("i");
+                        icon.classList.remove("fa-regular");
+                        icon.classList.add("fa-solid");
+                    }
+                }
+            });
+        });
+
+        // Filter Logic
+        function applyFilter(filterValue) {
+            let visibleCount = 0;
+
+            filterBtns.forEach((b) => {
+                if (b.getAttribute("data-filter") === filterValue) {
+                    b.classList.add("active");
+                } else {
+                    b.classList.remove("active");
+                }
+            });
+
+            shopCards.forEach((card) => {
+                const category = card.getAttribute("data-category");
+                if (filterValue === "all" || category === filterValue) {
+                    card.style.display = "flex";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            if (productCount) {
+                productCount.textContent = `Showing ${visibleCount} Products`;
+            }
+        }
+
+        filterBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                if (navbarSearchInput) navbarSearchInput.value = "";
+                const filterValue = btn.getAttribute("data-filter");
+                applyFilter(filterValue);
+            });
+        });
+
+        // Functional Navbar Search
+        if (navbarSearchInput) {
+            navbarSearchInput.addEventListener("input", function () {
+                const searchTerm = this.value.trim().toLowerCase();
+                let visibleCount = 0;
+
+                // Reset filter active button styles when searching
+                filterBtns.forEach(b => b.classList.remove("active"));
+                const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
+                if (allFilterBtn) allFilterBtn.classList.add("active");
+
+                shopCards.forEach((card) => {
+                    const title = (card.querySelector(".shop-card-title")?.innerText || "").toLowerCase();
+                    const sub = (card.querySelector(".shop-card-sub")?.innerText || "").toLowerCase();
+                    const cat = (card.getAttribute("data-category") || "").toLowerCase();
+
+                    if (title.includes(searchTerm) || sub.includes(searchTerm) || cat.includes(searchTerm)) {
+                        card.style.display = "flex";
+                        visibleCount++;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                if (productCount) {
+                    productCount.textContent = `Showing ${visibleCount} Products`;
+                }
+            });
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlCategory = urlParams.get('category');
+
+        if (urlCategory) {
+            applyFilter(urlCategory);
+            const shopSection = document.getElementById("shop");
+            if (shopSection) {
+                setTimeout(() => {
+                    shopSection.scrollIntoView({ behavior: "smooth" });
+                }, 300);
+            }
+        }
+
+        // Price Sorting
+        if (sortSelect && shopGrid) {
+            sortSelect.addEventListener("change", function () {
+                const sortedArray = Array.from(shopCards);
+
+                if (this.value === "low-high") {
+                    sortedArray.sort((a, b) => parseFloat(a.dataset.price.replace(/,/g, '')) - parseFloat(b.dataset.price.replace(/,/g, '')));
+                } else if (this.value === "high-low") {
+                    sortedArray.sort((a, b) => parseFloat(b.dataset.price.replace(/,/g, '')) - parseFloat(a.dataset.price.replace(/,/g, '')));
+                }
+
+                sortedArray.forEach((card) => shopGrid.appendChild(card));
+            });
+        }
+
+        // Wishlist Heart Click
+        document.querySelectorAll(".shop-wishlist-btn").forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                const card = this.closest(".shop-card");
+                const productId = getCardId(card);
+                const title = card.querySelector(".shop-card-title") ? card.querySelector(".shop-card-title").innerText : "Product";
+                const price = card.getAttribute("data-price") || "0";
+                const img = card.querySelector(".shop-img-box img") ? card.querySelector(".shop-img-box img").src : "";
+                const icon = this.querySelector("i");
+
+                const index = window.wishlistItems.findIndex(i => i.id === productId);
+
+                if (index === -1) {
+                    window.wishlistItems.push({ id: productId, title, price, img });
+                    this.classList.add("active");
+                    icon.classList.remove("fa-regular");
+                    icon.classList.add("fa-solid");
+                } else {
+                    window.wishlistItems.splice(index, 1);
+                    this.classList.remove("active");
+                    icon.classList.remove("fa-solid");
+                    icon.classList.add("fa-regular");
+                }
+
+                updateEverythingUI();
+            });
+        });
+
+        // Combined Event Listener
+        document.addEventListener("click", function (e) {
+            
+            // 1. Add to Bag
+            if (e.target.closest(".shop-add-btn")) {
+                const btn = e.target.closest(".shop-add-btn");
+                const card = btn.closest(".shop-card");
+                if (!card) return;
+
+                document.querySelectorAll(".shop-card").forEach(c => {
+                    if (c !== card) c.classList.remove("active-qty");
+                });
+
+                const productId = getCardId(card);
+                const title = card.querySelector(".shop-card-title") ? card.querySelector(".shop-card-title").innerText : "Product";
+                const price = card.getAttribute("data-price") || "0";
+                const img = card.querySelector(".shop-img-box img") ? card.querySelector(".shop-img-box img").src : "";
+
+                const existingItem = window.cartItems.find(i => i.id === productId);
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    window.cartItems.push({ id: productId, title: title, price: price, img: img, quantity: 1 });
+                }
+                
+                card.classList.add("active-qty");
+                updateEverythingUI();
+                return;
+            }
+
+            // 2. Plus Click
+            if (e.target.closest(".qty-plus")) {
+                const btn = e.target.closest(".qty-plus");
+                const card = btn.closest(".shop-card");
+                const productId = getCardId(card);
+
+                const item = window.cartItems.find(i => i.id === productId);
+                if (item) {
+                    item.quantity += 1;
+                } else {
+                    const title = card.querySelector(".shop-card-title") ? card.querySelector(".shop-card-title").innerText : "Product";
+                    const price = card.getAttribute("data-price") || "0";
+                    const img = card.querySelector(".shop-img-box img") ? card.querySelector(".shop-img-box img").src : "";
+                    window.cartItems.push({ id: productId, title, price, img, quantity: 1 });
+                }
+                updateEverythingUI();
+                return;
+            }
+
+            // 3. Minus Click
+            if (e.target.closest(".qty-minus")) {
+                const btn = e.target.closest(".qty-minus");
+                const card = btn.closest(".shop-card");
+                const productId = getCardId(card);
+
+                const itemIndex = window.cartItems.findIndex(i => i.id === productId);
+                if (itemIndex !== -1) {
+                    window.cartItems[itemIndex].quantity -= 1;
+                    if (window.cartItems[itemIndex].quantity <= 0) {
+                        window.cartItems.splice(itemIndex, 1);
+                        card.classList.remove("active-qty");
+                    }
+                }
+                updateEverythingUI();
+                return;
+            }
+
+            // 4. Remove from Cart
+            if (e.target.closest(".cart-item-remove")) {
+                const row = e.target.closest(".cart-item-row");
+                const productId = row.getAttribute("data-id");
+
+                window.cartItems = window.cartItems.filter(i => i.id !== productId);
+                updateEverythingUI();
+                return;
+            }
+
+            // 5. Remove from Wishlist
+            if (e.target.closest(".wishlist-item-remove")) {
+                const row = e.target.closest(".cart-item-row");
+                const productId = row.getAttribute("data-id");
+
+                window.wishlistItems = window.wishlistItems.filter(i => i.id !== productId);
+
+                shopCards.forEach(card => {
+                    if (getCardId(card) === productId) {
+                        const btn = card.querySelector(".shop-wishlist-btn");
+                        if (btn) {
+                            btn.classList.remove("active");
+                            const icon = btn.querySelector("i");
+                            icon.classList.remove("fa-solid");
+                            icon.classList.add("fa-regular");
+                        }
+                    }
+                });
+
+                updateEverythingUI();
+                return;
+            }
+
+            // 6. Outside Click Handler
+            document.querySelectorAll(".shop-card").forEach(card => {
+                if (!card.contains(e.target)) {
+                    card.classList.remove("active-qty");
+                }
+            });
+        });
+
+        // Newsletter Modal Logic
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterModalOverlay = document.getElementById('newsletterModalOverlay');
+        const newsletterModalCloseBtn = document.getElementById('newsletterModalCloseBtn');
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = document.getElementById('newsletterEmail');
+                if (emailInput && emailInput.value.trim() !== '') {
+                    if (newsletterModalOverlay) {
+                        newsletterModalOverlay.classList.add('active');
+                    }
+                    newsletterForm.reset();
+                }
+            });
+        }
+
+        if (newsletterModalCloseBtn) {
+            newsletterModalCloseBtn.addEventListener('click', function() {
+                newsletterModalOverlay.classList.remove('active');
+            });
+        }
+
+        if (newsletterModalOverlay) {
+            newsletterModalOverlay.addEventListener('click', function(e) {
+                if (e.target === newsletterModalOverlay) {
+                    newsletterModalOverlay.classList.remove('active');
+                }
+            });
+        }
+    });
+
+    // Image/Title Redirect to Checkout
+    document.querySelectorAll(".shop-img-box img, .shop-card-title").forEach((element) => {
+        element.style.cursor = "pointer";
+        element.addEventListener("click", function (e) {
+            e.stopPropagation();
+            const card = this.closest(".shop-card");
+            if (!card) return;
+
+            const title = card.querySelector(".shop-card-title") ? card.querySelector(".shop-card-title").innerText : "Product";
+            const price = card.getAttribute("data-price") || "0";
+            const img = card.querySelector(".shop-img-box img") ? card.querySelector(".shop-img-box img").src : "";
+            const subtitle = card.querySelector(".shop-card-sub") ? card.querySelector(".shop-card-sub").innerText : "";
+
+            window.location.href = `checkout.html?title=${encodeURIComponent(title)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}&subtitle=${encodeURIComponent(subtitle)}`;
+        });
+    });
+
+    // Buy Now Button Redirect to Checkout
+    document.addEventListener("click", function (e) {
+        if (e.target.closest(".shop-buy-now-btn")) {
+            e.preventDefault();
+            e.stopPropagation();
+            const buyBtn = e.target.closest(".shop-buy-now-btn");
+            const card = buyBtn.closest(".shop-card");
+            if (!card) return;
+
+            const title = card.querySelector(".shop-card-title") ? card.querySelector(".shop-card-title").innerText : "Product";
+            const price = card.getAttribute("data-price") || "0";
+            const img = card.querySelector(".shop-img-box img") ? card.querySelector(".shop-img-box img").src : "";
+            const subtitle = card.querySelector(".shop-card-sub") ? card.querySelector(".shop-card-sub").innerText : "";
+
+            window.location.href = `checkout.html?title=${encodeURIComponent(title)}&price=${encodeURIComponent(price)}&img=${encodeURIComponent(img)}&subtitle=${encodeURIComponent(subtitle)}`;
+        }
+    });
+
+    // Proceed to Checkout Redirection
+    document.addEventListener("click", function(e) {
+        if (e.target.closest(".cart-checkout-btn")) {
+            if (!window.cartItems || window.cartItems.length === 0) {
+                alert("Aapka bag khali hai!");
+                return;
+            }
+            localStorage.setItem("fimpsCart", JSON.stringify(window.cartItems));
+            window.location.href = "maincheckout.html";
+        }
+    });
+    </script>
+    
+</body>
+</html>

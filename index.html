@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIMPS | Premium Skincare</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Fixed Header */
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.headline{
+    background-color: rgb(153, 107, 106);
+    text-align: center;
+    padding: 10px 0;
+    font-size: 17px;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.headline p{
+    display: inline-block;
+    padding-left: 100%;
+    animation: slide 12s linear infinite;
+} 
+
+@keyframes slide { 
+    0% { 
+        transform: translateX(0); 
+    } 
+    100% { 
+        transform: translateX(-100%);
+    } 
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ebd3cba8;
+    padding: 10px 40px;
+    height: 80px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.logo img{
+    width: 109px;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links li { 
+    position: relative; 
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #6e4f4f;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.nav-links a:hover { 
+    color: #3b2323; 
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #8c5b5a;
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    padding: 10px 0;
+    z-index: 1001;
+}
+
+.dropdown-menu li { 
+    width: 100%; 
+}
+
+.dropdown-menu a {
+    color: #ffffff;
+    padding: 10px 20px;
+    text-transform: none;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+}
+
+.dropdown-menu a:hover { 
+    background-color: #744746; 
+    color: #ffffff; 
+}
+
+.dropdown:hover .dropdown-menu { 
+    display: block; 
+}
+
+.search-box{ 
+    position: relative; 
+    width: 260px; 
+}
+
+.search-box input{
+    width: 100%;
+    height: 38px;
+    border: 1px solid rgba(110, 79, 79, 0.2);
+    outline: none;
+    padding: 0 15px 0 35px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.6);
+    font-size: 13px;
+    color: #6e4f4f;
+    transition: 0.3s;
+}
+
+.search-box input::placeholder { 
+    color: #a08080; 
+}
+
+.search-box input:focus{
+    background: #ffffff;
+    border-color: #8c5b5a;
+    box-shadow: 0 0 8px rgba(140, 91, 90, 0.2);
+}
+
+.search-box i{
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c5b5a;
+    font-size: 14px;
+}
+
+.nav-actions { 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+}
+
+.nav-actions a {
+    color: #6e4f4f;
+    font-size: 18px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-actions a:hover { 
+    color: #3b2323; 
+}
+
+.cart-icon { 
+    position: relative; 
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: #8c5b5a;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body{
+    /* padding-top: 34px; */
+}
+
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #ebd3cb;
+}
+
+.hero video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+    display: block;
+}
+
+.fimps-welcome-section {
+    padding: 30px 60px;
+    background-color: #fcf9f6;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.fimps-grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    max-width: 1378px;
+    width: 100%;
+    height: 500px; 
+}
+
+.fimps-content-col,
+.fimps-image-col {
+    opacity: 0;
+    will-change: transform, opacity;
+    height: 500px; 
+}
+
+.fimps-content-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 28px 30px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.fimps-content-col.animate {
+    animation: fadeInLeft 1.2s ease-out forwards;
+}
+
+.fimps-image-col.animate {
+    animation: fadeInRight 1.2s ease-out forwards;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(80px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.fimps-image-col {
+    width: 100%;
+}
+
+.fimps-image-col img {
+    width: 100%;
+    height: 500px; 
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+}
+
+.fimps-content-col .fimps-subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #8c7b70;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.fimps-content-col h2 {
+    font-family: 'Lato', sans-serif;
+    font-size: 30px;
+    font-weight: 300;
+    color: #1a1a1a;
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+.fimps-content-col .fimps-lead {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.fimps-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 15px;
+}
+
+.feature-item strong {
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #222;
+}
+
+.feature-item p {
+    font-size: 12px;
+    color: #666;
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+.fimps-btn {
+    display: inline-block;
+    width: fit-content;
+    padding: 12px 24px;
+    background-color: #2b2b2b;
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.fimps-btn:hover {
+    background-color: #4a4a4a;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+    .fimps-grid-wrapper {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .fimps-content-col,
+    .fimps-image-col,
+    .fimps-image-col img {
+        height: 450px;
+    }
+}
+
+.floating-3d-section {
+    width: 100%;
+    padding: 0px 60px;
+    background-color: #fcf9f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.scene-container {
+    perspective: 1200px;
+    width: 100%;
+    max-width: 1378px;
+    height: 550px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 100px;
+}
+
+.cards-3d-group {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* gap: 20px; */
+}
+
+.card-3d {
+    position: relative;
+    width: 260px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 12px;
+    box-shadow: -15px 25px 40px rgba(0, 0, 0, 0.18);
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+.card-image-wrap {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.star-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(4px);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.card-content {
+    position: relative;
+    padding: 22px 8px 8px 8px;
+}
+
+.brand-logo-badge {
+    position: absolute;
+    top: -18px;
+    left: 8px;
+    width: 40px;
+    height: 40px;
+    background-color: #8c5b5a;
+    color: #ffffff;
+    border-radius: 50%;
+    border: 3px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-subtitle {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 16px;
+}
+
+.category-pill {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.pill-green  { background-color: #dbe8d8; color: #4a6b48; }
+.pill-purple { background-color: #e5def0; color: #6b528a; }
+.pill-pink   { background-color: #fce1e1; color: #b85454; }
+.pill-blue   { background-color: #dbe7f5; color: #4b6a94; }
+
+.card1{
+  transform: rotate(-20deg);
+  z-index: 0;
+   box-shadow: -20px 4px 18px rgba(0, 0, 0, 0.18);
+}
+.card2{
+    
+   transform: rotate(-8deg);
+    z-index: 1;
+    right: 93px;
+    bottom: 42px;
+    box-shadow: -20px 4px 18px rgba(0, 0, 0, 0.18);
+  
+}
+.card3{
+    transform: rotate(0deg);
+    z-index: 2;
+    right: 193px;
+    bottom: 53px;
+     box-shadow: -20px 4px 18px rgba(0, 0, 0, 0.18);
+}
+.card4{
+    transform: rotate(-20deg);
+    z-index: 3;
+    transform: rotate(8deg);
+    z-index: 3;
+    right: 292px;
+    bottom: 40px;
+     box-shadow: -20px 4px 18px rgba(0, 0, 0, 0.18);
+}
+/* Google Font import for luxury display serif style */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+.care-heading-section {
+  width: 100%;
+  background-color: #f8f3ee; 
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px; 
+  max-width: 1200px;
+  width: 100%;
+}
+
+
+.decorative-line {
+  flex-grow: 1;
+  max-width: 250px; 
+  height: 1px;
+  background-color: #3b2319; 
+}
+
+
+.care-title {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  font-size: 40px;
+  font-weight: 500;
+  color: #3b2319;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0;
+  white-space: nowrap;
+  text-shadow: #222;
+}
+
+
+@media (max-width: 768px) {
+  .care-title {
+    font-size: 22px;
+    letter-spacing: 1.5px;
+  }
+  .decorative-line {
+    max-width: 100px;
+  }
+}
+.treatment-section {
+  width: 100%;
+  /* background-color: #f6ede7; 
+  padding: 90px 40px; */
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  right: 100px;
+}
+
+.treatment-container {
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* Header Styling */
+.treatment-header {
+  margin-bottom: 50px;
+}
+
+.treatment-title {
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 500;
+  color: #2b1a17; /* Deep rich brown */
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  width: 517px;
+}
+
+.treatment-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: #7d6e6a; /* Soft brown muted text */
+  line-height: 1.7;
+  max-width: 950px;
+  margin: 0;
+}
+
+/* Bottom Content Layout */
+.treatment-content {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.treatment-stats-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Individual Stat Rows */
+.stat-item {
+  display: flex;
+  align-items: center;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 22px;
+  color: #2b1a17;
+}
+
+.stat-number {
+  font-weight: 500;
+  min-width: 65px;
+  letter-spacing: 0.5px;
+}
+
+.stat-divider {
+  color: #bfaea9; /* Subtle accent vertical bar */
+  margin: 0 24px;
+  font-weight: 300;
+  font-size: 24px;
+}
+
+.stat-label {
+  font-weight: 400;
+  color: #4a3a37;
+  letter-spacing: 0.3px;
+}
+
+/* Oval Pill Button with Smooth Hover Effect */
+.shop-now-btn {
+  display: inline-block;
+  margin-top: 15px;
+  width: max-content;
+  padding: 16px 52px;
+  border: 1.5px solid #2b1a17;
+  border-radius: 50px;
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2b1a17;
+  text-decoration: none;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  background-color: transparent;
+  transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+  box-shadow: 0 4px 15px rgba(43, 26, 23, 0.05);
+}
+
+.shop-now-btn:hover {
+  background-color: #2b1a17;
+  color: #f6ede7;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(43, 26, 23, 0.2);
+}
+
+/* Mobile & Tablet Responsiveness */
+@media (max-width: 768px) {
+  .treatment-section {
+    padding: 60px 20px;
+  }
+  
+  .treatment-title {
+    font-size: 20px;
+    letter-spacing: 1.5px;
+  }
+
+  .treatment-description {
+    font-size: 14px;
+  }
+
+  .stat-item {
+    font-size: 18px;
+  }
+
+  .stat-divider {
+    margin: 0 14px;
+  }
+
+  .shop-now-btn {
+    padding: 14px 40px;
+    font-size: 14px;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+/* Section Wrapper matching FIMPS background */
+.bestsellers-section {
+  width: 100%;
+  padding: 60px 60px;
+  background-color: #fcf9f6;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.bestsellers-container {
+  max-width: 1378px;
+  width: 100%;
+}
+
+/* Premium Header Theme-Matched */
+.bestseller-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #2b1a17; /* Deep brand brown */
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+  text-align: left;
+  position: relative;
+  display: inline-block;
+  height: 40px;
+  width: 100%;
+  background: linear-gradient(to right, #2b1a17 0%, #2b1a17 50%, transparent 50%);
+}
+
+
+/* 3 Columns Grid */
+.bestsellers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Base Card & Initial Hidden Animation State */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+/* Active Scroll Animation State */
+.product-card.reveal-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Image Box */
+.product-image-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-color: #f8f3ee; /* Soft cream grey backdrop matching theme */
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Heart Wishlist Icon */
+.wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 15px;
+  color: #2b1a17;
+  cursor: pointer;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.1);
+  background: #ffffff;
+}
+
+/* Hover Description & Button */
+.hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(252, 249, 246, 0.92);
+  backdrop-filter: blur(3px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 3;
+}
+
+.hover-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.add-to-bag-btn {
+  width: 100%;
+  padding: 12px 20px;
+  background-color: #2b1a17;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-bag-btn:hover {
+  background-color: #8c5b5a;
+  transform: translateY(-2px);
+}
+
+.product-image-box:hover .hover-overlay {
+  opacity: 1;
+}
+
+.product-image-box:hover img {
+  transform: scale(1.05);
+}
+
+/* Card Details */
+.product-info {
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.product-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2b1a17;
+  margin: 0;
+}
+
+.product-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: #8c7b70;
+  margin: 0 0 4px 0;
+}
+
+.product-price {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2b1a17;
+}
+
+/* Responsive Setup */
+/* @media (max-width: 992px) {
+  .bestsellers-grid { grid-template-columns: repeat(2, 1fr); }
+  .bestsellers-section { padding: 60px 20px; }
+}
+
+@media (max-width: 600px) {
+  .bestsellers-grid { grid-template-columns: 1fr; }
+} */
+.sellerheading {
+  font-family: 'Cinzel', 'Playfair Display', serif;
+  display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 0px;
+    height: 77px;
+    width: 100%;
+    background: rgb(153, 107, 106);
+    
+}
+.sellerheading h2 {
+   
+    animation: slide2 9s linear infinite;
+    padding-left: 12%;
+}
+
+@keyframes slide2 { 
+    0% { 
+        transform: translateX(0); 
+    } 
+    100% { 
+        transform: translateX(-100%);
+    } 
+}
+
+:root {
+      --bg-color: #faf7f5;
+      --card-bg: #ffffff;
+      --primary-text: #2c2929;
+      --secondary-text: #6e6b6b;
+      --accent-color: #d4a373;
+      --star-color: #e6b800;
+      --border-color: #f0eae1;
+      --font-family: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .reviews-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-family);
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .section-header p {
+      color: var(--secondary-text);
+      font-size: 1rem;
+    }
+
+    /* Grid Layout */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    /* Review Card Styling */
+    .review-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 28px;
+      box-shadow: 0 4px 20px rgb(0 0 0 / 40%);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    .stars {
+      color: var(--star-color);
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .review-text {
+      color: var(--primary-text);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    /* User Profile Info */
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .user-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border-color);
+    }
+
+    .user-details h4 {
+      margin: 0;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-text);
+    }
+
+    .user-details span {
+      font-size: 0.8rem;
+      color: var(--secondary-text);
+    }
+    :root {
+      --bg-color: #faf7f5;
+      --footer-bg: #f3ece7;
+      --primary-text: #2c2929;
+      --secondary-text: #6e6b6b;
+      --accent-color: #d4a373;
+      --border-color: #e2d7cd;
+      --font-family: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .site-footer {
+      background-color: var(--footer-bg);
+      color: var(--primary-text);
+      padding: 60px 20px 30px;
+      margin-top: 60px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    /* Brand Column */
+    .footer-brand h3 {
+      font-family: var(--font-family);
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      margin: 0 0 15px 0;
+      text-transform: lowercase;
+    }
+
+    .footer-brand p {
+      color: var(--secondary-text);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      max-width: 300px;
+      margin-bottom: 20px;
+    }
+
+    /* Newsletter */
+    .newsletter-form {
+      display: flex;
+      gap: 8px;
+      max-width: 320px;
+    }
+
+    .newsletter-form input {
+      padding: 10px 14px;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      flex-grow: 1;
+      background-color: #ffffff;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      background-color: var(--primary-text);
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .newsletter-form button:hover {
+      background-color: var(--accent-color);
+    }
+
+    /* Footer Link Columns */
+    .footer-column h4 {
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin: 0 0 20px 0;
+      color: var(--primary-text);
+    }
+
+    .footer-column ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-column li {
+      margin-bottom: 12px;
+    }
+
+    .footer-column a {
+      color: var(--secondary-text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--primary-text);
+    }
+
+    /* Footer Bottom Bar */
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 50px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      font-size: 0.8rem;
+      color: var(--secondary-text);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .social-links a {
+      color: var(--secondary-text);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--primary-text);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+    .dropdown-menu li {
+    width: 100%;
+    list-style: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div class="headline">
+        <p>50% Discount on all our products till 30th July for first-time customers! Grab this offer as soon as possible!</p>
+    </div>
+
+    <nav>
+        <div class="logo">
+            <img src="fimps_logo-removebg-preview.png" alt="FIMPS Logo">
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li class="dropdown">
+                <a href="#">Category<i class="fa-solid fa-chevron-down" style="font-size: 10px;"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Skincare</a></li>
+                    <li><a href="#">Makeup</a></li>
+                    <li><a href="#">Haircare</a></li>
+                    <li><a href="#">Body Care</a></li>
+                </ul>
+            </li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search">
+        </div>
+
+        <div class="nav-actions">
+            <a href="#" title="Account"><i class="fa-regular fa-user"></i></a>
+            <a href="#" title="Wishlist"><i class="fa-regular fa-heart"></i></a>
+            <a href="#" class="cart-icon" title="Cart">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span class="cart-badge">1</span>
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="hero">
+    <video autoplay muted loop>
+        <source src="more_perfect_video_with_the.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<section class="fimps-welcome-section">
+    <div class="fimps-grid-wrapper">
+
+        <div class="fimps-content-col">
+            <div>
+                <span class="fimps-subtitle">WELCOME TO FIMPS.</span>
+                <h2>Reveal Your Natural Radiance.</h2>
+
+                <p class="fimps-lead">
+                    Experience the ultimate skincare journey where every glow tells a story. Inspired by the belief that healthy skin is the foundation of true confidence.
+                </p>
+
+                <div class="fimps-features">
+                    <div class="feature-item">
+                        <strong><i class="fa-solid fa-sparkles" style="color: #c9b19d; margin-right: 5px;"></i> Radiant Results</strong>
+                        <p>Tailored solutions designed to enhance natural beauty.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong><i class="fa-solid fa-flask" style="color: #c9b19d; margin-right: 5px;"></i> Exceptional Formulas</strong>
+                        <p>Thoughtfully selected ingredients with professional care.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong><i class="fa-solid fa-droplet" style="color: #c9b19d; margin-right: 5px;"></i> Ultimate Hydration</strong>
+                        <p>Maintain a healthy, deeply hydrated complexion.</p>
+                    </div>
+                    <div class="feature-item">
+                        <strong><i class="fa-solid fa-spa" style="color: #c9b19d; margin-right: 5px;"></i> Luxury Experience</strong>
+                        <p>Transform daily rituals into spa-like indulgence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#shop" class="fimps-btn">Explore Collection <i class="fa-solid fa-arrow-right" style="margin-left: 5px; font-size: 11px;"></i></a>
+        </div>
+
+        <div class="fimps-image-col">
+            <img src="Gemini_Generated_Image_g04wqog04wqog04w.png" alt="Skincare Radiant Model Image">
+        </div>
+
+    </div>
+</section>
+<div class="care-heading-section">
+  <div class="heading-container">
+    <div class="decorative-line"></div>
+    <h2 class="care-title">JUST CARE ABOUT YOUR OWN SKIN GIRL!</h2>
+  </div>
+</div>
+<section class="floating-3d-section">
+  <div class="scene-container">
+    <div class="cards-3d-group">
+      
+      <div class="card-3d card1">
+        <div class="card-image-wrap">
+         <img src="makeup.png" alt="">
+          <div class="star-badge"><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="card-content">
+          <div class="brand-logo-badge">FIMPS</div>
+          <h3 class="card-title">LeafLuxury Organics</h3>
+          <p class="card-subtitle">FIMPS Cosmetics</p>
+          <span class="category-pill pill-green">Moisturizers</span>
+        </div>
+      </div>
+
+      <div class="card-3d card2">
+        <div class="card-image-wrap">
+         <img src="skinnnn.png" alt="">
+          <div class="star-badge"><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="card-content">
+          <div class="brand-logo-badge">FIMPS</div>
+          <h3 class="card-title">EcoChic PlantRadiance</h3>
+          <p class="card-subtitle">FIMPS Cosmetics</p>
+          <span class="category-pill pill-purple">Serums</span>
+        </div>
+      </div>
+
+      <div class="card-3d card3">
+        <div class="card-image-wrap">
+         <img src="Screenshot 2026-07-31 002628.png" alt="">
+          <div class="star-badge"><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="card-content">
+          <div class="brand-logo-badge">FIMPS</div>
+          <h3 class="card-title">PetalPure Naturé Beauty</h3>
+          <p class="card-subtitle">FIMPS Cosmetics</p>
+          <span class="category-pill pill-pink">Cleansers</span>
+        </div>
+      </div>
+
+      <div class="card-3d card4">
+        <div class="card-image-wrap">
+         <img src="body care.png" alt="">
+          <div class="star-badge"><i class="fa-solid fa-star"></i></div>
+        </div>
+        <div class="card-content">
+          <div class="brand-logo-badge">FIMPS</div>
+          <h3 class="card-title">MineralMoist Essence</h3>
+          <p class="card-subtitle">FIMPS Cosmetics</p>
+          <span class="category-pill pill-blue">Toners</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="treatment-section">
+  <div class="treatment-container">
+    
+    <!-- Top Heading & Subtext -->
+    <div class="treatment-header">
+      <h2 class="treatment-title">
+        MAKE YOUR APPEARANCE LOOK EVEN MORE PERFECT WITH OUR TREATMENT
+      </h2>
+      <p class="treatment-description">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.
+      </p>
+    </div>
+
+    <!-- Bottom Grid Layout -->
+    <div class="treatment-content">
+
+      <!-- Right Stats & CTA -->
+      <div class="treatment-stats-wrapper">
+        
+        <div class="stat-item">
+          <span class="stat-number">90%</span>
+          <span class="stat-divider">|</span>
+          <span class="stat-label">Satisfied Customer</span>
+        </div>
+
+        <div class="stat-item">
+          <span class="stat-number">5.0</span>
+          <span class="stat-divider">|</span>
+          <span class="stat-label">Rated by 5.000 People</span>
+        </div>
+
+        <!-- Pill Button -->
+        <a href="#" class="shop-now-btn">SHOP NOW</a>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const animatedElements = document.querySelectorAll(".fimps-content-col, .fimps-image-col");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate");
+            } else {
+                entry.target.classList.remove("animate");
+            }
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    animatedElements.forEach((el) => observer.observe(el));
+});
+</script>
+
+<div class="sellerheading">
+    <h2 style="font-family: 'Cinzel', 'Playfair Display', serif; font-size: 40px; font-weight: 500;">BEST SELLING ITEMS OF FIMS BEAUTY! BUY NOW!</h2>
+</div>
+
+<section class="bestsellers-section" id="bestsellersSection">
+      <div class="bestsellers-container">
+    <div class="bestsellers-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-image-box">
+          <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+          <img src="serum.png" alt="Super Glow">
+          <div class="hover-overlay">
+            <p class="hover-desc">Nourishing Vitamin C + Magnesium serum for a lit-from-within glow.</p>
+            <button class="add-to-bag-btn"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Super Glow</h3>
+          <p class="product-subtitle">vitamin c + magnesium serum</p>
+          <span class="product-price">₹ 2,600</span>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-image-box">
+          <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+          <img src="cleanser.png" alt="Milky Jelly Cleanser">
+          <div class="hover-overlay">
+            <p class="hover-desc">The gentle, creamy gel cleanser leaves your face feeling healthy and soft, never tight.</p>
+            <button class="add-to-bag-btn"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Milky Jelly Cleanser</h3>
+          <p class="product-subtitle">conditioning face wash</p>
+          <span class="product-price">₹ 1,400</span>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-image-box">
+          <button class="wishlist-btn"><i class="fa-solid fa-heart" style="color: #8c5b5a;"></i></button>
+          <img src="lipstick.png" alt="Solution">
+          <div class="hover-overlay">
+            <p class="hover-desc">Exfoliating skin perfector that unglues dead skin cells and cleans pores.</p>
+            <button class="add-to-bag-btn"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Solution</h3>
+          <p class="product-subtitle">exfoliating skin perfector</p>
+          <span class="product-price">₹ 1,800</span>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-image-box">
+          <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+          <img src="cream.png" alt="Priming Moisturizer">
+          <div class="hover-overlay">
+            <p class="hover-desc">Lightweight, buildable hydration that readies skin for seamless makeup application.</p>
+            <button class="add-to-bag-btn"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Priming Moisturizer</h3>
+          <p class="product-subtitle">buildable daily hydration</p>
+          <span class="product-price">₹ 2,100</span>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card">
+        <div class="product-image-box">
+          <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+          <img src="toner.png" alt="Futuredew">
+          <div class="hover-overlay">
+            <p class="hover-desc">Oil-serum hybrid that gives instant, long-lasting dewiness in a bottle.</p>
+            <button class="add-to-bag-btn"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Futuredew</h3>
+          <p class="product-subtitle">facial oil-serum hybrid</p>
+          <span class="product-price">₹ 2,900</span>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card">
+        <div class="product-image-box">
+          <button class="wishlist-btn"><i class="fa-regular fa-heart"></i></button>
+          <img src="sunscreenn.png" alt="Balm Dotcom">
+          <div class="hover-overlay">
+            <p class="hover-desc">A hydrating lip balm packed with antioxidants and natural emollients.</p>
+            <button class="add-to-bag-btn"><i class="fa-solid fa-bag-shopping"></i> Add to Bag</button>
+          </div>
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Balm Dotcom</h3>
+          <p class="product-subtitle">universal skin salve</p>
+          <span class="product-price">₹ 1,200</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll(".product-card");
+
+  const cardObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Adds staggered delay so cards animate sequentially
+          cards.forEach((card, index) => {
+            setTimeout(() => {
+              card.classList.add("reveal-card");
+            }, index * 120); // 120ms gap between each card entrance
+          });
+        } else {
+          // Removes class when scrolled away so it re-animates every time
+          entry.target.classList.remove("reveal-card");
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+    }
+  );
+
+  cards.forEach((card) => cardObserver.observe(card));
+});
+</script>
+<section class="reviews-section">
+    <div class="section-header">
+      <h2>Loved by Real Skin</h2>
+      <p>See what our glowing community has to say about fims beauty.</p>
+    </div>
+
+    <div class="reviews-grid">
+      <!-- Card 1 -->
+      <div class="review-card">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"The serum completely transformed my morning routine. My skin feels hydrated all day with the perfect natural glow!"</p>
+        </div>
+        <div class="user-info">
+          <img class="user-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" alt="Sophia M.">
+          <div class="user-details">
+            <h4>Sophia M.</h4>
+            <span>Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="review-card">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Finally a brand that cares about clean, lightweight formulas. It absorbs instantly without leaving any greasy residue."</p>
+        </div>
+        <div class="user-info">
+          <img class="user-avatar" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80" alt="Elena R.">
+          <div class="user-details">
+            <h4>Elena R.</h4>
+            <span>Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="review-card">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Minimalist packaging and maximum results. My sensitive skin has never been this calm and even-toned."</p>
+        </div>
+        <div class="user-info">
+          <img class="user-avatar" src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80" alt="Maya K.">
+          <div class="user-details">
+            <h4>Maya K.</h4>
+            <span>Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="review-card">
+        <div>
+          <div class="stars">★★★★★</div>
+          <p class="review-text">"Hands down the best moisturizer I've used this year. Elegant texture and gives that lit-from-within look."</p>
+        </div>
+        <div class="user-info">
+          <img class="user-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" alt="Chloe S.">
+          <div class="user-details">
+            <h4>Chloe S.</h4>
+            <span>Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <!-- Brand & Newsletter -->
+      <div class="footer-brand">
+        <h3>fims beauty</h3>
+        <p>Pure, minimal, and thoughtful skincare created to bring out your natural glow every day.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit">Join</button>
+        </form>
+      </div>
+
+      <!-- Shop Links -->
+      <div class="footer-column">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">All Products</a></li>
+          <li><a href="#">Serums & Oils</a></li>
+          <li><a href="#">Moisturizers</a></li>
+          <li><a href="#">Cleansers</a></li>
+          <li><a href="#">Best Sellers</a></li>
+        </ul>
+      </div>
+
+      <!-- About Links -->
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Clean Ingredients</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="#">Press</a></li>
+        </ul>
+      </div>
+
+      <!-- Customer Care -->
+      <div class="footer-column">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Track Order</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 fims beauty. All rights reserved.</p>
+      
+      <div class="social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+
+      <div>
+        <a href="#" style="color: inherit; text-decoration: none; margin-right: 12px;">Privacy Policy</a>
+        <a href="#" style="color: inherit; text-decoration: none;">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
